@@ -1,17 +1,18 @@
-from flask import Flask, flash, redirect, render_template, request, session
-from flask_session import Session
-from cs50 import SQL
-from werkzeug.security import check_password_hash, generate_password_hash
-from functools import wraps
 import csv
 import datetime
-import pytz
-import requests
+import os
 import subprocess
 import urllib
 import uuid
-import os
+from functools import wraps
 
+import pytz
+import requests
+from cs50 import SQL
+from flask import Flask, flash, redirect, render_template, request, session
+from werkzeug.security import check_password_hash, generate_password_hash
+
+from flask_session import Session
 
 app = Flask(__name__)
 
@@ -164,4 +165,5 @@ def register():
 
         # log the user in and redirect to homepage
         session["user_id"] = newUserID
+        return redirect("/")
         return redirect("/")
